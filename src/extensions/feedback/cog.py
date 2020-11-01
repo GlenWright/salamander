@@ -211,9 +211,10 @@ class Feedback(commands.Cog):
         if not already_exists:
             raise UserFeedbackError(custom_message="That type doesn't exist.")
 
-        resp = await ctx.confirm(
+        resp = await ctx.prompt(
             "Are you sure you want to delete this feedback type? Doing so will also remove all feedback you have gotten for this type. (yes/no)",
             options=("yes", "no"),
+            timeout=30,
         )
 
         if resp != "yes":
